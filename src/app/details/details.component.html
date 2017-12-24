@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="jumbotron">
+          <h2>Album Details</h2>
+  </div>
+  <div *ngIf="album">
+
+      <div class="card border-primary mb-3"  style="max-width: 60rem;">
+          <div class="card-header k" ><b>Album ID: {{album.AlbumID}}</b></div>
+          <div class="card-body text-dark">
+            <h4 class="card-title">Title: {{album.Title}}</h4>
+            <p>Artist Name: {{album.ArtistName}}</p>
+            <p class="card-title">Genre: {{album.Genre}}</p>
+            <p class="card-title">Price: {{album.Price | currency:'USD':true}}</p>
+            <p class="card-title">Released Date: {{album.ReleasedDate}}</p>
+            <p class="card-title">Producer Name: {{album.ProducerName}}</p>
+            <p class="card-title">Copied Sold: {{album.CopiedSold}}</p>
+            <p class="card-title">Price: {{album.Price}}</p>
+          </div>
+          </div>
+
+  </div>
+  <button class="btn btn-primary" type="submit" [routerLink]="['/list']">Cancel</button>
+  <button class="btn btn-danger" type="submit" (click)="getDelete()" [routerLink]="['/list']">Delete</button>
+  <button [routerLink]="['/list',album.AlbumID,'edit']" class="btn btn-info">Edit</button>
+</div>

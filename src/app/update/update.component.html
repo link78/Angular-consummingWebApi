@@ -1,0 +1,117 @@
+<div class="container" *ngIf="album">
+    <div class="jumbotron">
+        <h2>Update Album</h2>
+    </div>
+  
+    <div class="container">
+  
+    
+      
+        <form novalidate  #form="ngForm" (ngSubmit)="formSubmit(form)">
+            <div *ngIf="FormSubmitted && form.invalid" class="bg-danger p-a-1 m-b-1">
+              There are problems with the form, please check your input!
+              <ul>
+                  <li *ngFor="let error of getFormValidation(form)">{{error}}</li>
+              </ul>
+            </div>
+          
+            <div class="form-group">
+              <label for="">Title</label>
+              <input  class="form-control" name="Title" 
+              [(ngModel)]="album.Title" #name="ngModel" required minlength="3">
+          
+              <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                   <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                   
+              </ul>
+            </div>
+          
+          
+            <div class="form-group">
+                <label>Artist Name</label>
+                <input  class="form-control" name="ArtistName" 
+                [(ngModel)]="album.ArtistName" #name="ngModel" required minlength="3">
+            
+                <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                    <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                    
+               </ul>
+              </div>
+      
+              <div class="form-group">
+                  <label>Price</label>
+                  <input  class="form-control" name="Price" 
+                  [(ngModel)]="album.Price" #name="ngModel" required pattern="^[0-9\.]+$" />
+              
+                  <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                      <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                      
+                 </ul>
+                </div>
+      
+                <div class="form-group">
+                    <label>Genre</label>
+                    <input  class="form-control" name="Genre" 
+                    [(ngModel)]="album.Genre" #name="ngModel" required minlength="5">
+                
+                    <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                        <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                        
+                   </ul>
+                  </div>
+      
+                  <div class="form-group">
+                      <label>Released Date</label>
+                      <input  class="form-control" name="ReleasedDate" 
+                      [(ngModel)]="album.ReleasedDate" #name="ngModel" required >
+                  
+                      <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                          <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                          
+                     </ul>
+                    </div>
+          
+                    <div class="form-group">
+                        <label>Producer Name</label>
+                        <input  class="form-control" name="ProducerName" 
+                        [(ngModel)]="album.ProducerName" #name="ngModel" required minlength="5">
+                    
+                        <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                            <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                            
+                       </ul>
+                      </div>
+      
+      
+      
+                      <div class="form-group">
+                          <label>Copied Sold</label>
+                          <input  class="form-control" name="CopiedSold" 
+                          [(ngModel)]="album.CopiedSold" #name="ngModel" required minlength="[9-0]">
+                      
+                          <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                              <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                              
+                         </ul>
+                        </div>
+                        <div class="form-group">
+                          <label>Image</label>
+                          <input  class="form-control" name="Image" 
+                          [(ngModel)]="album.Image" #name="ngModel" required>
+                      
+                          <ul class="list-unstyled text-danger" *ngIf="(FormSubmitted || name.dirty) && name.invalid">
+                              <li *ngFor="let error of getValidationMessage(name)">{{error}}</li>
+                              
+                         </ul>
+                        </div>
+          
+                  <div *ngIf="message" class="alert alert-success">{{message}}</div>
+                  <button class="btn btn-success" [disabled]="FormSubmitted && form.invalid"
+                   type="submit" [class.btn-secondary]="FormSubmitted && form.invalid">Save Data</button>
+                  <button class="btn btn-primary" type="submit" [routerLink]="['/list']">Cancel</button>
+          </form>
+          
+          
+        </div>
+      
+      </div>
